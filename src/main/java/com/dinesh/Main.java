@@ -1,11 +1,13 @@
 package com.dinesh;
 
-import com.dinesh.greet.Greeting;
-import com.dinesh.http.Client;
+import com.dinesh.rest.RestClient;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class Main {
-    public static void main(String[] args) {
-        Client client = new Client();
-        System.out.println(client.get("https://example.com/"));
+    public static void main(String[] args) throws IOException {
+        RestClient client = new RestClient();
+        System.out.println(Objects.requireNonNull(client.getApi().getPhotos().execute().body()).size());
     }
 }
